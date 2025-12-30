@@ -25,15 +25,17 @@
     header.setAttribute('data-stuck', isStuck ? 'true' : 'false');
   }
 
-  // Debounce scroll for performance
-  let scrollTicking = false;
+  // Throttled scroll handler using requestAnimationFrame
+  // scrollTicking is scoped to the IIFE module to prevent memory leaks
+  const scrollState = { ticking: false };
+  
   function onScroll() {
-    if (!scrollTicking) {
+    if (!scrollState.ticking) {
       window.requestAnimationFrame(() => {
         updateStickyState();
-        scrollTicking = false;
+        scrollState.ticking = false;
       });
-      scrollTicking = true;
+      scrollState.ticking = true;
     }
   }
 

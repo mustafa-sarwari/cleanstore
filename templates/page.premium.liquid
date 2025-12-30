@@ -236,12 +236,12 @@
               <div class="premium-cardFrame">
                 {%- if product.featured_image -%}
                   <img 
+                    class="premium-cardImage"
                     src="{{ product.featured_image | image_url: width: 600 }}" 
                     alt="{{ product.title | escape }}"
                     loading="lazy"
                     width="600"
                     height="600"
-                    style="width: 100%; height: 100%; object-fit: cover;"
                   >
                 {%- else -%}
                   <span class="premium-cardHint">Preview</span>
@@ -256,7 +256,7 @@
             {%- comment -%} Placeholder cards when no products exist {%- endcomment -%}
             {%- for i in (1..3) -%}
               <div class="premium-card reveal">
-                <div class="premium-cardFrame">
+                <div class="premium-cardFrame" role="img" aria-label="Product placeholder image">
                   <span class="premium-cardHint">Preview</span>
                 </div>
                 <div class="premium-cardBody">
