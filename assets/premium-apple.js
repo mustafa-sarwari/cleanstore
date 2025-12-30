@@ -1,11 +1,15 @@
 /*
-  Premium landing interactions
+  Premium Apple-Inspired Landing Interactions
+  ============================================
   - Sticky header state (padding tighten on scroll)
   - Mobile menu toggle (aria + hidden)
-  - Scroll reveal (IntersectionObserver)
+  - Scroll reveal with IntersectionObserver
+  - Smooth, performant animations
 */
 
 (function () {
+  'use strict';
+
   const root = document.querySelector('[data-premium]');
   if (!root) return;
 
@@ -14,44 +18,60 @@
   const menuButton = root.querySelector('[data-menu-button]');
   const menuClose = root.querySelector('[data-menu-close]');
 
-  function setStuck() {
+  // Sticky Header State
+  function updateStickyState() {
     if (!header) return;
-    header.setAttribute('data-stuck', window.scrollY > 4 ? 'true' : 'false');
+    const isStuck = window.scrollY > 10;
+    header.setAttribute('data-stuck', isStuck ? 'true' : 'false');
   }
 
+  // Debounce scroll for performance
+  let scrollTicking = false;
+  function onScroll() {
+    if (!scrollTicking) {
+      window.requestAnimationFrame(() => {
+        updateStickyState();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }
+
+  // Mobile Menu Functions
   function openMenu() {
     if (!menu || !menuButton) return;
+    
     menu.hidden = false;
     menuButton.setAttribute('aria-expanded', 'true');
-
-    // Prevent background scroll while menu is open
-    document.documentElement.style.overflow = 'hidden';
-
-    // Focus the first menu link for keyboard users
-    const firstLink = menu.querySelector('a');
-    if (firstLink) firstLink.focus();
+    document.body.style.overflow = 'hidden';
+    
+    // Focus first link after animation
+    requestAnimationFrame(() => {
+      const firstLink = menu.querySelector('a');
+      if (firstLink) firstLink.focus();
+    });
   }
 
   function closeMenu() {
     if (!menu || !menuButton) return;
+    
     menu.hidden = true;
     menuButton.setAttribute('aria-expanded', 'false');
-    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
     menuButton.focus();
   }
 
   function toggleMenu() {
     if (!menu || !menuButton) return;
     const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
-    if (isOpen) closeMenu();
-    else openMenu();
+    isOpen ? closeMenu() : openMenu();
   }
 
-  // Sticky header
-  setStuck();
-  window.addEventListener('scroll', setStuck, { passive: true });
+  // Initialize header
+  updateStickyState();
+  window.addEventListener('scroll', onScroll, { passive: true });
 
-  // Menu interactions
+  // Menu button handlers
   if (menuButton) {
     menuButton.addEventListener('click', toggleMenu);
   }
@@ -60,39 +80,41 @@
     menuClose.addEventListener('click', closeMenu);
   }
 
-  // Click outside to close
-  if (menu) {
-    menu.addEventListener('click', (event) => {
-      if (event.target === menu) closeMenu();
-    });
-  }
-
-  // Escape to close
-  window.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape') return;
-    if (!menu || menu.hidden) return;
-    closeMenu();
+  // Close menu on Escape key
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu && !menu.hidden) {
+      closeMenu();
+    }
   });
 
-  // Scroll reveal
-  const items = root.querySelectorAll('.reveal');
-  if (!items.length) return;
+  // Scroll Reveal Animation
+  const revealElements = root.querySelectorAll('.reveal');
+  
+  if (!revealElements.length) return;
 
+  // Fallback for browsers without IntersectionObserver
   if (!('IntersectionObserver' in window)) {
-    items.forEach((el) => el.classList.add('is-visible'));
+    revealElements.forEach((el) => el.classList.add('is-visible'));
     return;
   }
 
-  const io = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.add('is-visible');
-        io.unobserve(entry.target);
-      }
-    },
-    { root: null, threshold: 0.12 }
-  );
+  // Create observer with optimized settings
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -60px 0px',
+    threshold: 0.1
+  };
 
-  items.forEach((el) => io.observe(el));
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all reveal elements
+  revealElements.forEach((el) => revealObserver.observe(el));
+
 })();
