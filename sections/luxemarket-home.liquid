@@ -1,0 +1,278 @@
+{%- comment -%}
+  LuxeMarket – Home
+  Premium homepage section: hero + featured products + about + testimonials + newsletter.
+{%- endcomment -%}
+
+<section class="luxe-home" aria-label="LuxeMarket home">
+  <div class="luxe-container">
+    <div class="luxe-hero">
+      <div class="luxe-heroGrid">
+        <div class="luxe-reveal">
+          {%- if section.settings.eyebrow != blank -%}
+            <div class="luxe-eyebrow">{{ section.settings.eyebrow }}</div>
+          {%- endif -%}
+
+          <h1 class="luxe-heroTitle">{{ section.settings.hero_title }}</h1>
+
+          {%- if section.settings.hero_subtitle != blank -%}
+            <p class="luxe-heroSub">{{ section.settings.hero_subtitle }}</p>
+          {%- endif -%}
+
+          <div class="luxe-ctaRow">
+            {%- if section.settings.primary_label != blank and section.settings.primary_link != blank -%}
+              <a class="luxe-btn luxe-btnPrimary" href="{{ section.settings.primary_link }}">{{ section.settings.primary_label }}</a>
+            {%- endif -%}
+            {%- if section.settings.secondary_label != blank and section.settings.secondary_link != blank -%}
+              <a class="luxe-btn luxe-btnSecondary" href="{{ section.settings.secondary_link }}">{{ section.settings.secondary_label }}</a>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <div class="luxe-heroMedia luxe-reveal">
+          {%- if section.settings.hero_image != blank -%}
+            {{ section.settings.hero_image | image_url: width: 1600 | image_tag: loading: 'eager', sizes: '100vw', widths: '600, 800, 1000, 1200, 1600', alt: section.settings.hero_image.alt | escape }}
+          {%- else -%}
+            <div style="aspect-ratio: 16/12;"></div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <div class="luxe-section">
+      <div class="luxe-reveal">
+        <h2 class="luxe-sectionTitle">{{ section.settings.featured_title }}</h2>
+        {%- if section.settings.featured_subtitle != blank -%}
+          <p class="luxe-sectionSub">{{ section.settings.featured_subtitle }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- assign featured_collection = section.settings.featured_collection -%}
+      {%- if featured_collection != blank -%}
+        <div class="luxe-grid">
+          {%- for product in featured_collection.products limit: section.settings.featured_limit -%}
+            <a class="luxe-card luxe-reveal" href="{{ product.url }}">
+              <div class="luxe-cardMedia">
+                {%- if product.featured_media != blank -%}
+                  {{ product.featured_media | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '33vw', widths: '360, 540, 720, 900', alt: product.featured_media.alt | escape }}
+                {%- else -%}
+                  <div style="aspect-ratio: 1/1;"></div>
+                {%- endif -%}
+              </div>
+              <h3 class="luxe-cardTitle">{{ product.title }}</h3>
+              <div class="luxe-price">{{ product.price | money }}</div>
+            </a>
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <p class="luxe-sectionSub luxe-reveal">Choose a featured collection in the section settings.</p>
+      {%- endif -%}
+    </div>
+
+    <div class="luxe-section">
+      <div class="luxe-reveal">
+        <h2 class="luxe-sectionTitle">{{ section.settings.about_title }}</h2>
+        {%- if section.settings.about_text != blank -%}
+          <div class="luxe-sectionSub">{{ section.settings.about_text }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="luxe-section" aria-label="Testimonials">
+      <div class="luxe-reveal">
+        <h2 class="luxe-sectionTitle">{{ section.settings.testimonials_title }}</h2>
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="luxe-grid">
+          {%- for block in section.blocks -%}
+            <div class="luxe-card luxe-reveal" {{ block.shopify_attributes }}>
+              <div style="font-family: var(--font-heading--family); font-size: 1.05rem; line-height: 1.6;">“{{ block.settings.quote }}”</div>
+              <div style="color: color-mix(in srgb, var(--lux-gray-800) 72%, var(--lux-white)); margin-top: 6px;">— {{ block.settings.name }}</div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="luxe-section" aria-label="Newsletter">
+      <div class="luxe-reveal">
+        <h2 class="luxe-sectionTitle">{{ section.settings.newsletter_title }}</h2>
+        {%- if section.settings.newsletter_subtitle != blank -%}
+          <p class="luxe-sectionSub">{{ section.settings.newsletter_subtitle }}</p>
+        {%- endif -%}
+      </div>
+
+      <div class="luxe-reveal" style="margin-top: 18px;">
+        {% form 'customer' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+            <input
+              type="email"
+              name="contact[email]"
+              required
+              placeholder="Email address"
+              style="flex:1; min-width: 240px; padding: 12px 14px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--lux-black) 14%, transparent);"
+            >
+            <button class="luxe-btn luxe-btnPrimary" type="submit">Subscribe</button>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LuxeMarket home",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "LuxeMarket"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero title",
+      "default": "Luxury Starts Here"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero subtitle",
+      "default": "Premium products, refined experience, and a store you can trust."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "Explore"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "header",
+      "content": "Featured products"
+    },
+    {
+      "type": "text",
+      "id": "featured_title",
+      "label": "Section title",
+      "default": "Featured Products"
+    },
+    {
+      "type": "textarea",
+      "id": "featured_subtitle",
+      "label": "Section subtitle",
+      "default": "Curated premium picks — updated regularly."
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "featured_limit",
+      "label": "Products to show",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "About"
+    },
+    {
+      "type": "text",
+      "id": "about_title",
+      "label": "Title",
+      "default": "Built for trust. Designed for delight."
+    },
+    {
+      "type": "richtext",
+      "id": "about_text",
+      "label": "Text",
+      "default": "<p>Every detail is intentional—from typography to checkout. LuxeMarket is a premium storefront experience focused on clarity, speed, and confidence.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Testimonials"
+    },
+    {
+      "type": "text",
+      "id": "testimonials_title",
+      "label": "Title",
+      "default": "Trusted by customers"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Title",
+      "default": "Subscribe to our Newsletter"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_subtitle",
+      "label": "Subtitle",
+      "default": "Early access to new releases and premium offers."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Premium quality and a beautiful shopping experience."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Customer"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "LuxeMarket home",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial" },
+        { "type": "testimonial" }
+      ]
+    }
+  ]
+}
+{% endschema %}

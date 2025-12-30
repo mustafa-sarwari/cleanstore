@@ -1,14 +1,14 @@
 {
-  "name": "gm-sarwari-shopify-theme",
+  "name": "luxemarket-shopify-theme",
   "version": "1.0.0",
   "private": true,
-  "description": "GM Sarwari – A fast, minimal Shopify theme for testing and selling",
+  "description": "LuxeMarket – Premium e-commerce Shopify theme",
   "scripts": {
-    "dev": "shopify theme serve",
+    "dev": "shopify theme dev --port 9293",
     "pull": "shopify theme pull",
     "push": "shopify theme push",
     "check": "shopify theme check",
-    "zip": "zip -r gm-sarwari-theme.zip . -x node_modules/* .git/*"
+    "zip": "tar -a -c -f gm-sarwari-theme.zip --exclude=node_modules --exclude=.git --exclude=gm-sarwari-theme.zip *"
   },
   "devDependencies": {
     "@shopify/cli": "latest",

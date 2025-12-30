@@ -1,0 +1,119 @@
+{%- comment -%}
+  Premium Landing Page (Section)
+  - Extracted from templates/page.premium.liquid
+  - Intended for use in templates/index.premium.json
+{%- endcomment -%}
+
+{{ 'premium-apple.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'premium-apple.js' | asset_url }}" defer></script>
+
+<div class="premium" data-premium>
+  <a class="premium-skip" href="#PremiumMain">Skip to content</a>
+
+  <header class="premium-header" data-header>
+    <div class="premium-container">
+      <nav class="premium-nav" aria-label="Primary navigation">
+        <div class="premium-brand">
+          <a class="premium-brandLink" href="{{ routes.root_url }}" aria-label="{{ shop.name }} - Home">
+            <span class="premium-logoMark" aria-hidden="true"></span>
+            <span class="premium-logoText">{{ shop.name }}</span>
+          </a>
+        </div>
+
+        <div class="premium-links">
+          <a class="premium-link" href="{{ routes.collections_url }}/templates">Templates</a>
+          <a class="premium-link" href="{{ routes.collections_url }}/bundles">Bundles</a>
+          <a class="premium-link" href="{{ routes.root_url }}/pages/documentation">Documentation</a>
+          <a class="premium-link" href="{{ routes.root_url }}/pages/support">Support</a>
+        </div>
+
+        <div class="premium-actions">
+          <a class="premium-link" href="{{ routes.cart_url }}">Cart</a>
+          <button
+            class="premium-menuBtn"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-controls="PremiumMenu"
+            aria-expanded="false"
+            data-menu-button
+          >
+            <span class="premium-menuIcon" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <div class="premium-menu" id="PremiumMenu" data-menu hidden>
+      <div class="premium-container">
+        <div class="premium-menuPanel" role="dialog" aria-modal="true" aria-label="Navigation menu">
+          <div class="premium-menuHeader">
+            <span class="premium-menuTitle">Menu</span>
+            <button class="premium-menuClose" type="button" aria-label="Close menu" data-menu-close>
+              Close
+            </button>
+          </div>
+          <nav class="premium-menuLinks" aria-label="Mobile navigation">
+            <a class="premium-menuLink" href="{{ routes.collections_url }}/templates">Templates</a>
+            <a class="premium-menuLink" href="{{ routes.collections_url }}/bundles">Bundles</a>
+            <a class="premium-menuLink" href="{{ routes.root_url }}/pages/documentation">Documentation</a>
+            <a class="premium-menuLink" href="{{ routes.root_url }}/pages/support">Support</a>
+            <a class="premium-menuLink" href="{{ routes.cart_url }}">Cart</a>
+            <a class="premium-menuLink" href="{{ routes.search_url }}">Search</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="PremiumMain">
+    <section class="premium-hero" aria-labelledby="hero-title">
+      <div class="premium-container">
+        <div class="premium-heroInner reveal">
+          <p class="premium-eyebrow">Shopify Templates &amp; UI Sections</p>
+          <h1 class="premium-heroTitle" id="hero-title">
+            Premium design.<br>
+            Built for clarity.
+          </h1>
+          <p class="premium-heroSub">
+            Minimal, responsive, production-ready theme assets designed to look exceptional on day one—and scale with your brand.
+          </p>
+          <div class="premium-heroCtas">
+            <a class="premium-btn premium-btnPrimary" href="{{ routes.collections_url }}/templates">View Templates</a>
+            <a class="premium-btn premium-btnSecondary" href="{{ routes.collections_url }}/bundles">Browse Bundles</a>
+          </div>
+          <div class="premium-metrics" aria-label="Key benefits">
+            <div class="premium-metric">
+              <div class="premium-metricTitle">Fast</div>
+              <div class="premium-metricSub">Performance by design</div>
+            </div>
+            <div class="premium-metric">
+              <div class="premium-metricTitle">Clean</div>
+              <div class="premium-metricSub">Zero fluff. All signal.</div>
+            </div>
+            <div class="premium-metric">
+              <div class="premium-metricTitle">Ready</div>
+              <div class="premium-metricSub">Built to ship tomorrow</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {%- comment -%}
+      The remainder of the premium page is intentionally kept in the original
+      template (templates/page.premium.liquid). This section focuses on the
+      above-the-fold premium layout for a cleaner homepage.
+    {%- endcomment -%}
+  </main>
+</div>
+
+{% schema %}
+{
+  "name": "Premium landing",
+  "settings": []
+}
+{% endschema %}
