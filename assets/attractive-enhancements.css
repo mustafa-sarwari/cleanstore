@@ -1,0 +1,763 @@
+/* ==========================================================================
+   ATTRACTIVE VISUAL ENHANCEMENTS - Make Your Website Stand Out
+   ========================================================================== */
+
+/* =========================================================================
+   ENHANCED HERO SECTION - Eye-Catching Design
+   ========================================================================= */
+
+.hero-enhanced {
+  padding: 120px 40px;
+  text-align: center;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid #fff;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animated background pattern */
+.hero-enhanced::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%);
+  animation: backgroundFloat 15s ease-in-out infinite;
+  z-index: 0;
+}
+
+.hero-enhanced::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.03) 50%, transparent 70%);
+  animation: shimmer 3s infinite;
+  z-index: 0;
+}
+
+.hero-enhanced .container {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero-enhanced h1 {
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  animation: slideInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  line-height: 1.1;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.hero-enhanced .subheading {
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+  opacity: 0.95;
+  animation: slideInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
+  line-height: 1.8;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-enhanced .btn-hero {
+  animation: zoomIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s backwards;
+  background: #fff;
+  color: #000;
+  padding: 16px 48px;
+  font-weight: 700;
+  border: 3px solid #fff;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.hero-enhanced .btn-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  transition: left 0.4s ease;
+  z-index: -1;
+}
+
+.hero-enhanced .btn-hero:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(255,255,255,0.2);
+}
+
+.hero-enhanced .btn-hero:hover::before {
+  left: 0;
+}
+
+/* Animated background elements */
+@keyframes backgroundFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, -30px); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================================================================
+   ENHANCED PRODUCT CARDS - Attractive & Interactive
+   ========================================================================= */
+
+.product-card-enhanced {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card-enhanced:hover {
+  border-color: #000;
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Product Image Container */
+.product-card-enhanced .product-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  background: #f8f8f8;
+  aspect-ratio: 1;
+}
+
+.product-card-enhanced .product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.product-card-enhanced:hover .product-image {
+  transform: scale(1.1) rotate(2deg);
+}
+
+/* Product Badge Animation */
+.product-card-enhanced .product-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #c41e3a;
+  color: white;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  z-index: 10;
+  animation: badgePulse 2s ease-in-out infinite;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(196, 30, 58, 0.4);
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* Product Info Section */
+.product-card-enhanced .product-info {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card-enhanced .product-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.product-card-enhanced:hover .product-title {
+  color: #c41e3a;
+}
+
+.product-card-enhanced .product-description {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.product-card-enhanced .product-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.product-card-enhanced .product-price .original {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+/* Rating Stars */
+.product-card-enhanced .rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+
+.product-card-enhanced .stars {
+  color: #ffc107;
+  font-size: 14px;
+}
+
+.product-card-enhanced .rating-count {
+  color: #999;
+}
+
+/* Quick Action Button */
+.product-card-enhanced .quick-add-btn {
+  width: 100%;
+  padding: 12px;
+  background: #000;
+  color: white;
+  border: 2px solid #000;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card-enhanced .quick-add-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.product-card-enhanced .quick-add-btn:hover {
+  background: white;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.product-card-enhanced .quick-add-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* =========================================================================
+   ATTRACTIVE SECTION HEADERS
+   ========================================================================= */
+
+.section-header-attractive {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.section-header-attractive h2 {
+  font-size: 42px;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+}
+
+.section-header-attractive h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #c41e3a, transparent);
+  animation: expandWidth 1s ease-in-out;
+}
+
+@keyframes expandWidth {
+  from { width: 0; }
+  to { width: 60px; }
+}
+
+.section-header-attractive p {
+  font-size: 16px;
+  color: #666;
+  margin-top: 15px;
+  line-height: 1.8;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================================================================
+   SECTION BACKGROUND ENHANCEMENTS
+   ========================================================================= */
+
+.section-gradient-light {
+  background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-gradient-light::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(196, 30, 58, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.section-gradient-light::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.03) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* =========================================================================
+   FEATURE CARDS - Showcase Products/Features
+   ========================================================================= */
+
+.feature-card-attractive {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid #e8e8e8;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card-attractive::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.feature-card-attractive:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  border-color: #c41e3a;
+}
+
+.feature-card-attractive:hover::before {
+  left: 100%;
+}
+
+.feature-card-attractive .feature-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  transition: transform 0.4s ease;
+}
+
+.feature-card-attractive:hover .feature-icon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.feature-card-attractive h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+.feature-card-attractive p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* =========================================================================
+   TESTIMONIAL CARDS - Build Trust
+   ========================================================================= */
+
+.testimonial-card-attractive {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  border-left: 4px solid #c41e3a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.testimonial-card-attractive::before {
+  content: '"';
+  position: absolute;
+  font-size: 60px;
+  color: #c41e3a;
+  opacity: 0.2;
+  top: 10px;
+  left: 10px;
+}
+
+.testimonial-card-attractive:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(196, 30, 58, 0.15);
+}
+
+.testimonial-card-attractive .stars {
+  color: #ffc107;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.testimonial-card-attractive .text {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.testimonial-card-attractive .author {
+  font-weight: 700;
+  color: #000;
+  font-size: 14px;
+}
+
+.testimonial-card-attractive .author-title {
+  font-size: 12px;
+  color: #999;
+}
+
+/* =========================================================================
+   FLOATING/PULSE ANIMATIONS
+   ========================================================================= */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(196, 30, 58, 0.7);
+  }
+  50% { 
+    box-shadow: 0 0 0 10px rgba(196, 30, 58, 0);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(20px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* =========================================================================
+   GRID & SECTION LAYOUTS
+   ========================================================================= */
+
+.product-grid-attractive {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.feature-grid-attractive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .product-grid-attractive {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .feature-grid-attractive {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .hero-enhanced {
+    padding: 80px 20px;
+    min-height: 500px;
+  }
+
+  .hero-enhanced h1 {
+    font-size: 42px;
+  }
+
+  .hero-enhanced .subheading {
+    font-size: 16px;
+  }
+}
+
+/* =========================================================================
+   HOVER EFFECTS & TRANSITIONS
+   ========================================================================= */
+
+.glow-on-hover {
+  transition: all 0.3s ease;
+}
+
+.glow-on-hover:hover {
+  box-shadow: 0 0 20px rgba(196, 30, 58, 0.3);
+}
+
+.scale-on-hover {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.scale-on-hover:hover {
+  transform: scale(1.05);
+}
+
+/* =========================================================================
+   COUNTDOWN TIMER STYLE
+   ========================================================================= */
+
+.countdown-banner {
+  background: linear-gradient(135deg, #c41e3a 0%, #a01830 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 30px;
+  animation: slide-in-top 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.countdown-banner h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.countdown-item {
+  background: rgba(0,0,0,0.2);
+  padding: 10px 15px;
+  border-radius: 4px;
+  min-width: 60px;
+}
+
+@keyframes slide-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================================
+   STAGGER ANIMATION FOR MULTIPLE ELEMENTS
+   ========================================================================= */
+
+.stagger-item {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.1s; }
+.stagger-item:nth-child(2) { animation-delay: 0.2s; }
+.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation-delay: 0.4s; }
+.stagger-item:nth-child(5) { animation-delay: 0.5s; }
+.stagger-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* =========================================================================
+   SPECIAL OFFER BANNER
+   ========================================================================= */
+
+.special-offer-banner {
+  background: linear-gradient(45deg, #000000, #1a1a1a);
+  color: white;
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 40px 0;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #c41e3a;
+}
+
+.special-offer-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(196, 30, 58, 0.2), transparent);
+  animation: shimmer 3s infinite;
+}
+
+.special-offer-banner h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.special-offer-banner .offer-text {
+  font-size: 18px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.special-offer-banner .offer-code {
+  background: #c41e3a;
+  padding: 10px 30px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-block;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================================
+   SMOOTH SCROLL & EASING
+   ========================================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Easing function utility */
+.ease-out-bounce {
+  animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ease-out-elastic {
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

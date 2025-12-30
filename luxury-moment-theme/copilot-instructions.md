@@ -1,0 +1,1 @@
+E:/Shopify Templates/First Tamplet/cleanstore/luxury-moment-theme/AGENTS.md

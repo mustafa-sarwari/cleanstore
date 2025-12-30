@@ -1,0 +1,320 @@
+{%- comment -%}
+  Premium landing page template (Apple-level inspired, original implementation)
+  Strict palette: #000 and #fff only
+  Purpose: Sell Shopify templates + UI sections
+{%- endcomment -%}
+
+{{ 'premium-apple.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'premium-apple.js' | asset_url }}" defer></script>
+
+<div class="premium" data-premium>
+  <a class="premium-skip" href="#PremiumMain">Skip to content</a>
+
+  <header class="premium-header" data-header>
+    <div class="premium-container">
+      <div class="premium-nav">
+        <div class="premium-brand">
+          <a class="premium-brandLink" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+            <span class="premium-logoMark" aria-hidden="true"></span>
+            <span class="premium-logoText">{{ shop.name }}</span>
+          </a>
+        </div>
+
+        <nav class="premium-links" aria-label="Primary">
+          <a class="premium-link" href="/collections/templates">Templates</a>
+          <a class="premium-link" href="/collections/bundles">Bundles</a>
+          <a class="premium-link" href="/pages/documentation">Documentation</a>
+          <a class="premium-link" href="/pages/support">Support</a>
+        </nav>
+
+        <div class="premium-actions">
+          <a class="premium-link" href="{{ routes.cart_url }}">Cart</a>
+
+          <button class="premium-menuBtn" type="button" aria-label="Open menu" aria-controls="PremiumMenu" aria-expanded="false" data-menu-button>
+            <span class="premium-menuIcon" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="premium-menu" id="PremiumMenu" data-menu hidden>
+      <div class="premium-container">
+        <div class="premium-menuPanel" role="dialog" aria-modal="true" aria-label="Menu">
+          <div class="premium-menuHeader">
+            <span class="premium-menuTitle">Menu</span>
+            <button class="premium-menuClose" type="button" aria-label="Close menu" data-menu-close>
+              <span aria-hidden="true">Close</span>
+            </button>
+          </div>
+
+          <div class="premium-menuLinks" role="list">
+            <a class="premium-menuLink" role="listitem" href="/collections/templates">Templates</a>
+            <a class="premium-menuLink" role="listitem" href="/collections/bundles">Bundles</a>
+            <a class="premium-menuLink" role="listitem" href="/pages/documentation">Documentation</a>
+            <a class="premium-menuLink" role="listitem" href="/pages/support">Support</a>
+            <a class="premium-menuLink" role="listitem" href="{{ routes.cart_url }}">Cart</a>
+            <a class="premium-menuLink" role="listitem" href="{{ routes.search_url }}">Search</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="PremiumMain">
+    <section class="premium-hero">
+      <div class="premium-container">
+        <div class="premium-heroInner reveal">
+          <p class="premium-eyebrow">Shopify templates and UI sections</p>
+          <h1 class="premium-heroTitle">Premium storefront design.
+            Built for speed, clarity, and trust.</h1>
+          <p class="premium-heroSub">Minimal, responsive, production-ready theme assets designed to look exceptional on day one—and scale with your brand.</p>
+
+          <div class="premium-heroCtas">
+            <a class="premium-btn premium-btnPrimary" href="/collections/templates">View Templates</a>
+            <a class="premium-btn premium-btnSecondary" href="/pages/demo">See Demo</a>
+          </div>
+
+          <div class="premium-heroMeta" aria-label="Highlights">
+            <div class="premium-metaItem">
+              <span class="premium-metaValue">Fast</span>
+              <span class="premium-metaLabel">Performance-first layouts</span>
+            </div>
+            <div class="premium-metaItem">
+              <span class="premium-metaValue">Clean</span>
+              <span class="premium-metaLabel">Strict black & white system</span>
+            </div>
+            <div class="premium-metaItem">
+              <span class="premium-metaValue">Ready</span>
+              <span class="premium-metaLabel">Shopify Liquid compatible</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="premium-story" aria-label="Featured templates">
+      <div class="premium-container">
+        <div class="premium-sectionHead reveal">
+          <h2 class="premium-h2">Featured releases</h2>
+          <p class="premium-sub">Large, confident product storytelling—built for conversion without noise.</p>
+        </div>
+
+        <article class="premium-feature reveal">
+          <div class="premium-featureMedia" aria-hidden="true">
+            <div class="premium-mediaFrame">
+              <span class="premium-mediaTag">Template</span>
+              <span class="premium-mediaHint">Preview image</span>
+            </div>
+          </div>
+          <div class="premium-featureBody">
+            <h3 class="premium-h3">Studio Template</h3>
+            <p class="premium-body">A modern storefront foundation with calm spacing, clear hierarchy, and purposeful motion—built to feel premium from first scroll.</p>
+            <div class="premium-linksRow">
+              <a class="premium-textLink" href="/products/studio-template">Learn more</a>
+              <a class="premium-textLink" href="/products/studio-template">Buy</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="premium-feature premium-featureReverse reveal">
+          <div class="premium-featureMedia" aria-hidden="true">
+            <div class="premium-mediaFrame">
+              <span class="premium-mediaTag">UI Section</span>
+              <span class="premium-mediaHint">Preview image</span>
+            </div>
+          </div>
+          <div class="premium-featureBody">
+            <h3 class="premium-h3">Editorial Collection</h3>
+            <p class="premium-body">A conversion-optimized set of sections for product storytelling—designed to ship fast and look timeless across brands.</p>
+            <div class="premium-linksRow">
+              <a class="premium-textLink" href="/products/editorial-collection">Learn more</a>
+              <a class="premium-textLink" href="/products/editorial-collection">Buy</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="premium-feature reveal">
+          <div class="premium-featureMedia" aria-hidden="true">
+            <div class="premium-mediaFrame">
+              <span class="premium-mediaTag">Bundle</span>
+              <span class="premium-mediaHint">Preview image</span>
+            </div>
+          </div>
+          <div class="premium-featureBody">
+            <h3 class="premium-h3">Complete Launch Pack</h3>
+            <p class="premium-body">Templates, sections, and documentation in one cohesive system—designed to reduce time-to-launch without compromising quality.</p>
+            <div class="premium-linksRow">
+              <a class="premium-textLink" href="/products/complete-launch-pack">Learn more</a>
+              <a class="premium-textLink" href="/products/complete-launch-pack">Buy</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="premium-grid" aria-label="Template catalog">
+      <div class="premium-container">
+        <div class="premium-sectionHead reveal">
+          <h2 class="premium-h2">Templates</h2>
+          <p class="premium-sub">A minimal catalog. Title and price. Nothing else.</p>
+        </div>
+
+        <div class="premium-products" role="list">
+          {%- for product in collections.frontpage.products -%}
+            <a class="premium-card reveal" role="listitem" href="{{ product.url }}">
+              <div class="premium-cardTop">
+                <div class="premium-cardMedia" aria-hidden="true">
+                  <div class="premium-cardFrame">
+                    <span class="premium-cardHint">Preview</span>
+                  </div>
+                </div>
+              </div>
+              <div class="premium-cardBody">
+                <div class="premium-cardTitle">{{ product.title }}</div>
+                <div class="premium-cardPrice">{{ product.price | money }}</div>
+              </div>
+            </a>
+          {%- else -%}
+            <div class="premium-empty reveal">
+              <p class="premium-body">No products found in the frontpage collection.</p>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+
+    <section class="premium-why" aria-label="Why choose us">
+      <div class="premium-container">
+        <div class="premium-sectionHead reveal">
+          <h2 class="premium-h2">Why choose us</h2>
+          <p class="premium-sub">The fundamentals—executed at a premium standard.</p>
+        </div>
+
+        <div class="premium-benefits">
+          <div class="premium-benefit reveal">
+            <div class="premium-icon" aria-hidden="true" data-icon="grid"></div>
+            <h3 class="premium-h4">Clean system</h3>
+            <p class="premium-body">A strict black-and-white UI that stays consistent across pages, sections, and screens.</p>
+          </div>
+          <div class="premium-benefit reveal">
+            <div class="premium-icon" aria-hidden="true" data-icon="type"></div>
+            <h3 class="premium-h4">Confident typography</h3>
+            <p class="premium-body">Large headlines, restrained body text, and a calm hierarchy designed for clarity.</p>
+          </div>
+          <div class="premium-benefit reveal">
+            <div class="premium-icon" aria-hidden="true" data-icon="ship"></div>
+            <h3 class="premium-h4">Built to ship</h3>
+            <p class="premium-body">Minimal JavaScript and clean Liquid structure—easy to maintain and extend.</p>
+          </div>
+          <div class="premium-benefit reveal">
+            <div class="premium-icon" aria-hidden="true" data-icon="support"></div>
+            <h3 class="premium-h4">Documentation first</h3>
+            <p class="premium-body">Clear installation steps and practical guidance, designed to reduce setup time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="premium-steps" aria-label="How it works">
+      <div class="premium-container">
+        <div class="premium-sectionHead reveal">
+          <h2 class="premium-h2">Installation</h2>
+          <p class="premium-sub">A simple three-step workflow. Calm, predictable, fast.</p>
+        </div>
+
+        <ol class="premium-stepList">
+          <li class="premium-step reveal">
+            <div class="premium-stepNum" aria-hidden="true">01</div>
+            <div class="premium-stepBody">
+              <h3 class="premium-h4">Choose a template</h3>
+              <p class="premium-body">Select a theme or a section bundle designed for your brand direction.</p>
+            </div>
+          </li>
+          <li class="premium-step reveal">
+            <div class="premium-stepNum" aria-hidden="true">02</div>
+            <div class="premium-stepBody">
+              <h3 class="premium-h4">Install in Shopify</h3>
+              <p class="premium-body">Upload the theme, add sections, and connect your products—no clutter, no bloat.</p>
+            </div>
+          </li>
+          <li class="premium-step reveal">
+            <div class="premium-stepNum" aria-hidden="true">03</div>
+            <div class="premium-stepBody">
+              <h3 class="premium-h4">Launch with confidence</h3>
+              <p class="premium-body">A premium baseline that looks great out of the box and scales as you grow.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="premium-trust" aria-label="Testimonials">
+      <div class="premium-container">
+        <div class="premium-sectionHead reveal">
+          <h2 class="premium-h2">Trusted for clarity</h2>
+          <p class="premium-sub">No hype. Just results.</p>
+        </div>
+
+        <div class="premium-quotes">
+          <figure class="premium-quote reveal">
+            <blockquote class="premium-quoteText">“Everything is intentionally designed. The spacing, the type, the rhythm—shipping felt effortless.”</blockquote>
+            <figcaption class="premium-quoteBy">Store owner</figcaption>
+          </figure>
+          <figure class="premium-quote reveal">
+            <blockquote class="premium-quoteText">“A premium foundation that doesn’t fight you. Clean code and calm UI throughout.”</blockquote>
+            <figcaption class="premium-quoteBy">Front-end developer</figcaption>
+          </figure>
+          <figure class="premium-quote reveal">
+            <blockquote class="premium-quoteText">“The product pages feel confident. No decoration. Just clarity and trust.”</blockquote>
+            <figcaption class="premium-quoteBy">Brand designer</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="premium-footer" aria-label="Footer">
+    <div class="premium-container">
+      <div class="premium-footerTop">
+        <div class="premium-footerCol">
+          <div class="premium-footerTitle">Explore</div>
+          <a class="premium-footerLink" href="/collections/templates">Templates</a>
+          <a class="premium-footerLink" href="/collections/bundles">Bundles</a>
+          <a class="premium-footerLink" href="/pages/documentation">Documentation</a>
+          <a class="premium-footerLink" href="/pages/support">Support</a>
+        </div>
+        <div class="premium-footerCol">
+          <div class="premium-footerTitle">Legal</div>
+          {%- if shop.policies.privacy_policy -%}
+            <a class="premium-footerLink" href="{{ shop.policies.privacy_policy.url }}">Privacy</a>
+          {%- endif -%}
+          {%- if shop.policies.refund_policy -%}
+            <a class="premium-footerLink" href="{{ shop.policies.refund_policy.url }}">Refunds</a>
+          {%- endif -%}
+          {%- if shop.policies.terms_of_service -%}
+            <a class="premium-footerLink" href="{{ shop.policies.terms_of_service.url }}">Terms</a>
+          {%- endif -%}
+          {%- if shop.policies.shipping_policy -%}
+            <a class="premium-footerLink" href="{{ shop.policies.shipping_policy.url }}">Shipping</a>
+          {%- endif -%}
+        </div>
+        <div class="premium-footerCol">
+          <div class="premium-footerTitle">Shop</div>
+          <a class="premium-footerLink" href="{{ routes.search_url }}">Search</a>
+          <a class="premium-footerLink" href="{{ routes.cart_url }}">Cart</a>
+          <a class="premium-footerLink" href="{{ routes.account_url }}">Account</a>
+        </div>
+      </div>
+
+      <div class="premium-footerBottom">
+        <div class="premium-footerLine" aria-hidden="true"></div>
+        <div class="premium-footerMeta">
+          <span class="premium-footerCopy">© {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+          <span class="premium-footerNote">Black & white. Minimal. Premium.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

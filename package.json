@@ -1,0 +1,20 @@
+{
+  "name": "gm-sarwari-shopify-theme",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GM Sarwari – A fast, minimal Shopify theme for testing and selling",
+  "scripts": {
+    "dev": "shopify theme serve",
+    "pull": "shopify theme pull",
+    "push": "shopify theme push",
+    "check": "shopify theme check",
+    "zip": "zip -r gm-sarwari-theme.zip . -x node_modules/* .git/*"
+  },
+  "devDependencies": {
+    "@shopify/cli": "latest",
+    "@shopify/theme": "latest"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
