@@ -1,0 +1,123 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., 1.0.1)'
+        required: true
+        default: '1.0.0'
+
+# Limit permissions for security
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Theme Package
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Theme Check
+        run: npm run check -- --fail-level error
+        continue-on-error: true
+
+      - name: Create Theme ZIP
+        # The npm run zip command creates gm-sarwari-theme.zip as defined in package.json
+        run: npm run zip
+
+      - name: Get version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cleanstore-theme-${{ steps.version.outputs.version }}
+          path: gm-sarwari-theme.zip
+          retention-days: 30
+
+  release:
+    name: Create Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: cleanstore-theme-${{ steps.version.outputs.version }}
+
+      - name: Rename artifact
+        run: mv gm-sarwari-theme.zip cleanstore-pro-${{ steps.version.outputs.version }}.zip
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          name: CleanStore Pro v${{ steps.version.outputs.version }}
+          body: |
+            ## CleanStore Pro v${{ steps.version.outputs.version }}
+            
+            ### Installation
+            
+            1. Download `cleanstore-pro-${{ steps.version.outputs.version }}.zip` below
+            2. Go to **Shopify Admin** → **Online Store** → **Themes**
+            3. Click **Add theme** → **Upload zip file**
+            4. Upload the downloaded ZIP file
+            5. Click **Publish** when ready
+            
+            ### What's Included
+            
+            - Premium Shopify theme with all sections and templates
+            - 30+ language translations
+            - Professional design system
+            - Comprehensive documentation
+            
+            ---
+            
+            For installation help, see the [README](https://github.com/${{ github.repository }}#-installation).
+          files: cleanstore-pro-${{ steps.version.outputs.version }}.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
