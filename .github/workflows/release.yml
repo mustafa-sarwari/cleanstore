@@ -11,10 +11,17 @@ on:
         required: true
         default: '1.0.0'
 
+# Limit permissions for security
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Build Theme Package
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout repository
@@ -34,6 +41,7 @@ jobs:
         continue-on-error: true
 
       - name: Create Theme ZIP
+        # The npm run zip command creates gm-sarwari-theme.zip as defined in package.json
         run: npm run zip
 
       - name: Get version

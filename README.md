@@ -187,7 +187,7 @@ Add custom styles in:
 ### Custom JavaScript
 
 Add custom scripts in:
-- `assets/luxemarket.js` - Custom JavaScript
+- `assets/luxemarket.js` - Theme-specific JavaScript functionality
 - New files in the `assets/` directory (reference in `theme.liquid`)
 
 ---
