@@ -226,3 +226,7 @@ For support and questions:
 ## Portfolio status
 
 This is a theme development project. Feature descriptions should be validated against the target Shopify store. No measured performance scores or formal accessibility certification are claimed here. The root package defines development, theme-check, pull, push, and archive scripts.
+
+## Theme validation and packaging
+
+Run `npm install`, then `npm run check` for Shopify Theme Check. Run `npm run zip` with Python 3 to create a real ZIP containing only the eight supported theme directories; documentation and development files are excluded. The theme check currently has no errors but retains inherited warnings. A development store is needed to verify store-specific behavior; this repository is a theme, with Shopify providing its backend.
