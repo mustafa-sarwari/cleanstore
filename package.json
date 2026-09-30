@@ -2,7 +2,7 @@
   "name": "luxemarket-shopify-theme",
   "version": "1.0.0",
   "private": true,
-  "description": "LuxeMarket \u2013 Premium e-commerce Shopify theme",
+  "description": "LuxeMarket – Premium e-commerce Shopify theme",
   "scripts": {
     "dev": "shopify theme dev --port 9293",
     "pull": "shopify theme pull",
@@ -14,6 +14,6 @@
     "@shopify/cli": "3.88.1"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20.10.0"
   }
 }
