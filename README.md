@@ -1,6 +1,6 @@
 # GM Sarwari Pro – Premium Shopify Theme
 
-A high-end, feature-rich Shopify theme with advanced functionality comparable to Apple and Amazon stores.
+A Shopify theme project with Liquid templates, configurable sections, JavaScript interactions, and CSS styling.
 
 ## 🚀 Features
 
@@ -14,10 +14,10 @@ A high-end, feature-rich Shopify theme with advanced functionality comparable to
 - **Newsletter Popup**: Timed popup with "don't show again" functionality
 - **Testimonials Carousel**: Customer reviews with star ratings
 - **Review Stars**: Dynamic star rating system with half-star support
-- **Fully Responsive**: Optimized for all devices and screen sizes
-- **Fast Performance**: Lightweight code and optimized assets
+- **Responsive layouts**: validate target devices before deployment
+- **Performance goal**: lightweight code and optimized assets
 - **SEO Optimized**: Built with best practices for search engines
-- **Accessibility**: WCAG compliant with keyboard navigation support
+- **Accessibility goal**: keyboard navigation support; formal WCAG conformance has not been established
 
 ### Premium Features
 - Multi-level navigation with hover dropdowns
@@ -91,7 +91,7 @@ A high-end, feature-rich Shopify theme with advanced functionality comparable to
 
 1. **Install Shopify CLI** (if not already installed):
    ```bash
-   npm install -g @shopify/cli @shopify/theme
+   npm install
    ```
 
 2. **Navigate to theme directory**:
@@ -101,7 +101,7 @@ A high-end, feature-rich Shopify theme with advanced functionality comparable to
 
 3. **Login to Shopify**:
    ```bash
-   shopify login
+   npm run dev -- --store your-store.myshopify.com
    ```
 
 4. **Start development server**:
@@ -199,9 +199,9 @@ This theme is licensed for use on Shopify stores. Do not redistribute without pe
 ## 🤝 Support
 
 For support and questions:
-- Email: support@yoursite.com
-- Documentation: https://yoursite.com/docs
-- Issues: https://github.com/yourname/cleanstore/issues
+- [Repository issues](https://github.com/mustafa-sarwari/cleanstore/issues)
+- [Setup documentation](QUICKSTART.md)
+- [Project owner](https://github.com/mustafa-sarwari)
 
 ## 🔄 Changelog
 
@@ -222,3 +222,7 @@ For support and questions:
 ---
 
 **Made with Shopify CLI** | **Version 1.0.0**
+
+## Portfolio status
+
+This is a theme development project. Feature descriptions should be validated against the target Shopify store. No measured performance scores or formal accessibility certification are claimed here. The root package defines development, theme-check, pull, push, and archive scripts.
